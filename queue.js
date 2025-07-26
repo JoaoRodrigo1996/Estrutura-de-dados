@@ -1,10 +1,13 @@
 class Queue {
   constructor() {
     this.items = []
+    this.head = 0
+    this.tail = 0
   }
 
-  enqueue(element) {
-    this.items.push(element)
+  enqueue(item) {
+    this.items[this.tail] = item
+    this.tail++
   }
 
   dequeue() {
@@ -12,7 +15,11 @@ class Queue {
       return 'Queue is empty'
     }
 
-    return this.items.shift()
+    const item = this.items[this.head]
+    delete this.items[this.head]
+
+    this.head++
+    return item
   }
 
   peek() {
@@ -20,15 +27,15 @@ class Queue {
       return 'Queue is empty'
     }
 
-    return this.items[0]
+    return this.items[this.head]
   }
 
   isEmpty() {
-    return this.items.length === 0
+    return this.tail - this.head === 0
   }
 
   size() {
-    return this.items.length
+    return this.tail - this.head
   }
 
   clear() {
@@ -47,4 +54,3 @@ queue.enqueue(5)
 queue.enqueue(2)
 queue.dequeue()
 queue.print()
-
