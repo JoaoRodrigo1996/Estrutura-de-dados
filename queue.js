@@ -1,24 +1,37 @@
+class Node {
+  constructor(data) {
+    this.data = data
+    this.next = null
+  }
+}
+
 class Queue {
   constructor() {
-    this.items = []
-    this.head = 0
-    this.tail = 0
+    this.head = null
+    this.tail = null
   }
 
   enqueue(item) {
-    this.items[this.tail] = item
-    this.tail++
+    const node = new Node(item)
+    if (this.tail != null) {
+      this.tail.next = node
+    }
+
+    this.tail = node
+
+    if (this.isEmpty()) {
+      this.head = node
+    }
   }
 
   dequeue() {
+    const item = this.head.data
+    this.head = this.head.next
+
     if (this.isEmpty() === 0) {
-      return 'Queue is empty'
+      this.tail = null
     }
 
-    const item = this.items[this.head]
-    delete this.items[this.head]
-
-    this.head++
     return item
   }
 
@@ -27,30 +40,23 @@ class Queue {
       return 'Queue is empty'
     }
 
-    return this.items[this.head]
+    return this.head.data
   }
 
   isEmpty() {
-    return this.tail - this.head === 0
-  }
-
-  size() {
-    return this.tail - this.head
-  }
-
-  clear() {
-    this.items = []
-  }
-
-  print() {
-    console.log(this.items.join(" -> "))
+    return this.head === null
   }
 }
 
 const queue = new Queue()
 
+console.log(queue)
 queue.enqueue(10)
 queue.enqueue(5)
 queue.enqueue(2)
+console.log(queue)
+queue.enqueue(7)
+console.log(queue)
 queue.dequeue()
-queue.print()
+queue.dequeue()
+console.log(queue)
