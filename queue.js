@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class Queue {
+export class Queue {
   constructor() {
     this.head = null
     this.tail = null
@@ -48,15 +48,15 @@ class Queue {
   }
 }
 
-const queue = new Queue()
+// const queue = new Queue()
 
-console.log(queue)
-queue.enqueue(10)
-queue.enqueue(5)
-queue.enqueue(2)
-console.log(queue)
-queue.enqueue(7)
-console.log(queue)
-queue.dequeue()
-queue.dequeue()
-console.log(queue)
+// console.log(queue)
+// queue.enqueue(10)
+// queue.enqueue(5)
+// queue.enqueue(2)
+// console.log(queue)
+// queue.enqueue(7)
+// console.log(queue)
+// queue.dequeue()
+// queue.dequeue()
+// console.log(queue)
